@@ -12,6 +12,10 @@ To explore the different elements of the BACKStack, dedicated docs guiding throu
 [MCP Server Capabilities](./backstage/06-mcp-server-capabilities.md)  
 
 ## ArgoCD
+[What Is ArgoCD](./argocd/01-what-is-argocd.md)  
+[Technical Overview](./argocd/02-technical-overview.md)  
+[Core Concepts](./argocd/03-core-concepts.md)  
+[Key Features](./argocd/04-key-features.md)  
 
 ## Crossplane
 
