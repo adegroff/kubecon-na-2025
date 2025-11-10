@@ -14,9 +14,8 @@ Crossplane's system model consists of five core abstractions:
 
 - **Composite Resource Definitions (XRDs)** - Define the schema for custom infrastructure APIs
 - **Composite Resources (XRs)** - Instances of infrastructure APIs created by users
-- **Claims (Claims)** - Multi-tenant abstractions of composite resources
 - **Compositions** - Define how composite resources are realized into managed resources
-- **Managed Resources (MRs)** - Kubernetes representations of cloud provider resources
+- **Managed Resources (MRs)** - Kubernetes representations of resources managed by Crossplane
 
 ## Composite Resource Definitions (XRD)
 
@@ -38,12 +37,12 @@ An XRD defines a custom infrastructure API. It specifies:
 
 XRDs can be defined at two scopes:
 
-- **Cluster-scoped** - The composite resource is visible cluster-wide. Used for infrastructure that belongs to nobody specifically.
-- **Namespaced** - The composite resource exists within a namespace. Used for infrastructure provisioned by a team or application.
+- **Cluster-scoped** - The composite resource is visible cluster-wide. Used for infrastructure and applications that belongs to nobody specifically.
+- **Namespaced** - The composite resource exists within a namespace. Used for infrastructure and applications provisioned by a team or application.
 
 ## Composite Resources (XR)
 
-A Composite Resource is an instance of an XRD. When a user creates a composite resource, they're requesting infrastructure following the schema defined by the XRD.
+A Composite Resource is an instance of an XRD. When a user creates a composite resource, they're requesting infrastructure and applications following the schema defined by the XRD.
 
 Key characteristics of composite resources:
 
@@ -67,25 +66,6 @@ spec:
   backupRetentionDays: 30
 ```
 
-## Claims (CompositeResourceClaims)
-
-Claims are a multi-tenant abstraction of composite resources. They allow team members to request infrastructure without needing cluster-level visibility.
-
-Key characteristics:
-
-- **Namespaced** - Exist within a namespace, providing isolation
-- **Delegated** - An XRD automatically creates a claim resource type
-- **Reference** - Point to and reference the underlying composite resource
-- **RBAC-friendly** - Easy to grant permissions per namespace/team
-
-When a user creates a claim, Crossplane automatically creates a corresponding composite resource. The claim becomes the user-facing interface to the infrastructure.
-
-**Relationships**:
-
-- One XRD can have one claim type
-- Multiple claims can reference the same composite resource (but typically 1:1)
-- Claims provide namespace-scoped access to infrastructure
-
 ## Compositions
 
 A Composition defines how a Composite Resource is realized into Managed Resources. It's the "recipe" for infrastructure.
@@ -105,7 +85,7 @@ Modern Crossplane uses composition functions instead of simple templating:
 - **Functions receive** the composite resource and generate managed resources
 - **Functions can** implement complex business logic, conditionals, loops
 - **Functions compose** - output from one function feeds to the next
-- **Functions support** Go, Python, template-based approaches
+- **Functions support** Go, Python, KCL, and Go Templates 
 
 **Example**: A database composition function might:
 
@@ -117,7 +97,7 @@ Modern Crossplane uses composition functions instead of simple templating:
 
 ## Managed Resources (MR)
 
-Managed Resources are Kubernetes representations of cloud provider resources. They represent actual cloud resources like:
+Managed Resources are Kubernetes representations of resources. They represent actual resources like:
 
 - EC2 instances, RDS databases, load balancers (AWS)
 - Virtual machines, databases, storage accounts (Azure)
@@ -126,7 +106,7 @@ Managed Resources are Kubernetes representations of cloud provider resources. Th
 
 ### Managed Resource Characteristics
 
-- **Provider-specific** - Each cloud provider has their own Managed Resource types (ProviderConfig)
+- **Provider-specific** - Each cloud provider has their own Managed Resource types 
 - **Stateful** - Track actual cloud resource state through status fields
 - **Observed state** - Report back to Crossplane what actually exists
 - **Reconciliation** - Controllers work to keep the resource in the desired state
@@ -150,19 +130,7 @@ Composite Resource (XR)
     ↓ (created by composition)
 Managed Resources (MRs)
     ↓ (represent)
-Cloud Resources (EC2, RDS, etc.)
-```
-
-### With Claims
-
-```
-User creates → Claim (ClaimXR)
-              ↓ (automatically creates)
-              Composite Resource (XR)
-              ↓ (composition creates)
-              Managed Resources (MRs)
-              ↓ (represent)
-              Cloud Resources
+Actual Resources (EC2, RDS, etc.)
 ```
 
 ## Multi-cloud Composition
@@ -198,11 +166,11 @@ This allows operators to understand resource health at a glance and provides hoo
 
 The Crossplane system model provides a clean abstraction from complexity:
 
-| Layer                      | Component                          | Role                         |
-| -------------------------- | ---------------------------------- | ---------------------------- |
-| User-facing                | XRDs + Compositions                | Define infrastructure APIs   |
-| Infrastructure abstraction | Composite Resources (XRs) / Claims | Users request infrastructure |
-| Resource management        | Managed Resources                  | Represent cloud resources    |
-| Cloud providers            | AWS, Azure, GCP, etc.              | Actual infrastructure        |
+| Layer                      | Component                          | Role                                        |
+| -------------------------- | ---------------------------------- | ------------------------------------------- |
+| User-facing                | XRDs + Compositions                | Define infrastructure and Application APIs  |
+| Infrastructure abstraction | Composite Resources (XRs)          | Users request infrastructure                |
+| Resource management        | Managed Resources                  | Represent cloud resources                   |
+| Cloud providers            | AWS, Azure, GCP, etc.              | Actual Resources                            | 
 
 This layered approach allows platform teams to build sophisticated, multi-cloud infrastructure platforms while keeping the user experience simple and consistent.

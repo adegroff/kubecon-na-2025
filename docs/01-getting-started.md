@@ -10,7 +10,7 @@ The BACK Stack orchestrates a robust suite of open-source tools, each tackling a
 
 -  [Backstage](https://github.com/backstage/backstage#getting-started): This user-friendly developer portal centralizes access to essential tools and services, streamlining workflows and boosting collaboration.
 -  [Argo CD](https://github.com/argoproj/argo-cd): Embracing the GitOps philosophy, it automates continuous delivery, ensuring seamless deployments and perfect synchronization between applications and their codebase.
--  [Crossplane](https://github.com/crossplane/crossplane): Forget juggling disparate cloud providers. Crossplane is the universal control plane, automating infrastructure provisioning with unmatched efficiency and flexibility.
+-  [Crossplane](https://github.com/crossplane/crossplane): Forget juggling disparate cloud providers. Crossplane is the universal control plane, empowering teams to compose, automate, and manage both infrastructure and applications declaratively and consistently with unmatched efficiency and flexibility.
 -  [Kyverno](https://github.com/kyverno/kyverno/): Security is woven into the fabric of development. Kyverno enforces policies, calculates compliance scores, and automates governance, safeguarding your applications from the ground up.
 
 ## The BACK Stack Advantage

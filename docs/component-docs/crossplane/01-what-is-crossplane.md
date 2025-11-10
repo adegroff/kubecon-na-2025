@@ -4,9 +4,9 @@ title: What is Crossplane?
 description: Crossplane is a control plane framework for platform engineering that lets you build control planes to manage cloud native software and define custom APIs for your infrastructure.
 ---
 
-[Crossplane](https://www.crossplane.io/) is a control plane framework for platform engineering. It lets you build control planes to manage your cloud native software and design the APIs and abstractions that your users use to interact with your infrastructure.
+[Crossplane](https://www.crossplane.io/) is a control plane framework for platform engineering. It lets you build control planes to manage your cloud native software and design the APIs and abstractions that your users use to interact with your infrastructure and applications.
 
-Crossplane extends Kubernetes with custom resources that allow you to build sophisticated infrastructure automation without writing custom controllers. It provides a declarative, GitOps-friendly approach to managing cloud resources across multiple providers.
+Crossplane extends Kubernetes with custom resources that allow you to build sophisticated infrastructure and application automation without writing custom controllers. It provides a declarative, GitOps-friendly approach to managing cloud resources across multiple providers.
 
 ## What is a Control Plane?
 
@@ -18,7 +18,7 @@ Crossplane enables you to build control planes directly on top of Kubernetes, le
 
 **Crossplane's key value is that it unlocks the benefits of building your own Kubernetes custom resources without having to write controllers for them.**
 
-With Crossplane, you define declarative pipelines of functions that generate the configuration your infrastructure should have. You get all the benefits of a Kubernetes controller without the complexity of implementing one.
+With Crossplane, you define declarative pipelines of functions that generate the configuration your infrastructure and/or applications should have. You get all the benefits of a Kubernetes controller without the complexity of implementing one.
 
 ## Core Components
 
@@ -47,7 +47,7 @@ Crossplane includes the following core components:
 
 ### For DevOps Teams
 
-- **Familiar tooling**: Use kubectl, GitOps operators, and existing Kubernetes ecosystem
+- **Familiar tooling**: Use `kubectl`, GitOps operators, and existing Kubernetes ecosystem
 - **Operational consistency**: Treat cloud infrastructure the same as Kubernetes applications
 - **Automation**: Automate infrastructure provisioning, updates, and cleanup
 - **Cost management**: Track and manage resource provisioning with Kubernetes resource limits
@@ -56,7 +56,7 @@ Crossplane includes the following core components:
 
 Crossplane integrates with and complements other cloud native tools and projects:
 
-- **Kubernetes** - Crossplane extends Kubernetes with infrastructure abstractions
+- **Kubernetes** - Crossplane transforms Kubernetes into a universal control plane, enabling you to compose and manage infrastructure and applications declaratively
 - **GitOps** - Works seamlessly with Argo CD, Flux, and other GitOps operators
 - **Service Mesh** - Complements service meshes like Istio for complete application networking
 - **Policy Engines** - Integrates with Kyverno, OPA, and other policy frameworks
@@ -70,4 +70,4 @@ To learn more about Crossplane:
 - **[System Model](./03-system-model.md)** - Learn about Crossplane's core concepts and abstractions
 - **[Key Concepts](./04-key-concepts.md)** - Deep dive into Composition, Managed Resources, and Operations
 
-For installation and getting started, see the [Crossplane documentation](https://docs.crossplane.io/latest/getting-started/).
+For installation and getting started, see the [Crossplane documentation](https://docs.crossplane.io/latest/get-started/).

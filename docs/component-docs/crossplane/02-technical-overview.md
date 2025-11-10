@@ -6,18 +6,18 @@ description: Technical overview of Crossplane architecture and components
 
 ## Purpose
 
-Crossplane is a control plane framework built on Kubernetes that enables platform engineers to build self-service infrastructure platforms. It allows you to define custom APIs for infrastructure provisioning without implementing complex Kubernetes controllers.
+Crossplane is a control plane framework built on Kubernetes that enables platform engineers to build self-service platforms for infrastructure and applications. It allows you to define custom APIs for provisioning without implementing complex Kubernetes controllers.
 
-Crossplane uses a composition-based architecture where infrastructure logic is defined through declarative pipelines of functions. These functions receive a custom resource from a user and return the desired state of infrastructure resources that should be created.
+Crossplane uses a function-based composition model where declarative pipelines define how infrastructure and applications are orchestrated. Each function processes a custom resource and outputs the desired state of managed resources, extending Crossplane beyond infrastructure into full-stack control.
 
-Crossplane is now a [CNCF Sandbox project](https://www.cncf.io/projects/crossplane/) and is production-ready with broad adoption across enterprises and platform teams.
+Crossplane is now a [CNCF Graduated project](https://www.cncf.io/projects/crossplane/) and is production-ready with broad adoption across enterprises and platform teams.
 
 ## Benefits
 
-- **For Platform Engineers**: Define custom infrastructure APIs without writing controllers. Composition functions reduce complexity while maintaining flexibility.
-- **For DevOps/SRE Teams**: Manage multi-cloud infrastructure declaratively through Kubernetes. Familiar tooling (kubectl, GitOps) apply to infrastructure.
-- **For Application Teams**: Self-serve infrastructure provisioning through well-defined, organizational APIs. Infrastructure changes tracked in Git.
-- **For Organizations**: Standardize infrastructure provisioning across teams. Enforce policies consistently. Reduce operational overhead through automation.
+- **For Platform Engineers**: Define custom APIs for infrastructure and applications without writing controllers. Composition functions reduce complexity while maintaining flexibility.
+- **For DevOps/SRE Teams**: Manage multi-cloud infrastructure and applications declaratively through Kubernetes. Leverage familiar workflows like `kubectl`, GitOps, and policy frameworks to define, compose, and automate everything from clusters to workloads.
+- **For Application Teams**: Self-serve platforms, infrastructure, and application environments through well-defined APIs. Provision complete stacks via organizational blueprints, with every change versioned and tracked in Git.
+- **For Organizations**: For Organizations: Unify infrastructure and application management under a single control plane. Apply consistent policies, improve governance, and automate provisioning across environments and clouds
 
 ## Core Architecture
 
@@ -29,13 +29,14 @@ Composition functions are the core building blocks. They receive an input (a com
 
 - **Go-based** - Performance-optimized for complex logic
 - **Python-based** - Easier development with CNCF patches and templating
-- **Template-based** - Simple declarative configurations using Go templating or KCL (Kcl Configuration Language)
+- **KCL-based** - Write your functions with KCL (KCL Configuration Language)
+- **Template-based** - Simple declarative configurations using Go templating 
 
 Functions form a pipeline where output from one feeds into the next, allowing modular, reusable infrastructure logic.
 
 ### 2. Composite Resources
 
-Composite Resources (XRs) are custom Kubernetes resources that represent your infrastructure abstractions. They:
+Composite Resources (XRs) are custom Kubernetes resources that represent your infrastructure and application abstractions. They:
 
 - Encapsulate infrastructure complexity
 - Provide a clean API for teams to provision resources
@@ -46,7 +47,7 @@ Example: An `Database` composite resource might abstract away provider-specific 
 
 ### 3. Managed Resources
 
-Managed Resources are Kubernetes representations of cloud provider resources (EC2 instances, RDS databases, etc.). Crossplane provides providers for AWS, Azure, GCP, and others.
+Managed Resources are Kubernetes representations of your resources (cloud resources, on-prem resources, or services). Crossplane provides providers for AWS, Azure, GCP, and others.
 
 Key characteristics:
 
@@ -88,7 +89,7 @@ The `crossplane` CLI provides commands for:
 When a user creates a composite resource, Crossplane executes a composition pipeline:
 
 1. **Receive** - User creates a composite resource (XR) with desired configuration
-2. **Validate** - Crossplane validates the XR against the CompositeResourceDefinition
+2. **Validate** - Crossplane validates the XR against the CompositeResourceDefinition (CRD)
 3. **Compose** - Executes the composition function pipeline:
    - Each function receives the XR and prior function outputs
    - Functions return desired state for managed resources
@@ -99,7 +100,7 @@ When a user creates a composite resource, Crossplane executes a composition pipe
 
 ## Key Design Principles
 
-- **Declarative** - Infrastructure is code, stored in Git, version controlled
+- **Declarative** - Infrastructure and Application configuration as code, stored in Git, version controlled
 - **Composable** - Functions build on each other, enabling reuse and modularity
 - **Extensible** - Custom logic through composition functions in your language of choice
 - **Cloud Native** - Runs on Kubernetes, uses Kubernetes patterns and conventions

@@ -48,7 +48,7 @@ This directory contains the configuration for running the Backstack Demo in GitH
    ```
 
 ## Notes
-- Go to the ports tab in vscode and change the visibility of the port 443 port-forward public. without this access to backstage will not work
+- Go to the ports tab in vscode and change the visibility of the port 443 port-forward public. To do this "right-click" "Backstage (443)" under the "Ports" Tab and change "Port Visibility" from "Private" to "Public". Without this access to Backstage will not work. 
 - The environment includes Docker-in-Docker support, allowing you to run kind clusters within the Codespace
 - The workspace is configured with recommended VS Code settings for the project
 

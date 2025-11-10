@@ -4,9 +4,9 @@ In this guide we will go through a hands on walkthrough of the demo environment,
 
 # Setup the environment
 Before starting the walkthrough, make sure you have setup the environment based on the relevant README for your environment:
-* For GitHub Codespaces using the Web IDE follow [these instructions](.devcontainer/WEB_BASED_CODESPACE.md)
-* For GitHub Codespaces using a Desktop VSCode environment follow [these instructions](.devcontainer/DESKTOP_BASED_CODESPACE.md)
-* For a local setup on your own machine follow [these instructions](./MANUAL_SETUP.md)
+* For GitHub Codespaces using the Web IDE follow [these instructions](../../.devcontainer/WEB_BASED_CODESPACE.md)
+* For GitHub Codespaces using a Desktop VSCode environment follow [these instructions](../../.devcontainer/DESKTOP_BASED_CODESPACE.md)
+* For a local setup on your own machine follow [these instructions](../.././MANUAL_SETUP.md)
 # Exploring around the environment
 <details>
   <summary>Explore What is installed in the environment</summary>
@@ -2032,7 +2032,7 @@ The BACKStack approach supports platform maturity:
 One of the ways to integrate AI into our environment is by adding plugins into our Backstage instance.
 
 There are multiple options already available in the community for this:
-- [**Agent Forge**](https://github.com/backstage/community-plugins/tree/main/workspaces/agent-forge/plugins/agent-forge) - A Backstage plugin which integrates with the CNOE project called CAIPE (Commnity AI Platform Engineering) to provide specialized chatbots with specified Agents for different elements in the stack directly into the Backstage UI.  
+- [**Agent Forge**](https://github.com/backstage/community-plugins/tree/main/workspaces/agent-forge/plugins/agent-forge) - A Backstage plugin which integrates with the CNOE project called CAIPE (Community AI Platform Engineering) to provide specialized chatbots with specified Agents for different elements in the stack directly into the Backstage UI.  
 
 ![Agent Forge](../images/ai/agent-forge.png)
   
