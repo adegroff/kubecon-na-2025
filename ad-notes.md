@@ -15,6 +15,16 @@ export ARGOCD_ADMIN_PASSWORD=`kubectl get secret -n argocd argocd-initial-admin-
 echo "ArgoCD Admin Password: ${ARGOCD_ADMIN_PASSWORD}"
 ```
 
+# Following restart of Codespaces
+
+watch kubectl get pods -n backstage-system
+
+watch kubectl get pods -n argocd
+
 # update argocd-cm or workflow-controller ConfigMap to use argocd-repo-server.argocd.svc.cluster.local:8081
 
-kubectl rollout restart deployment -n argocd argocd-server argocd-repo-server
+kubectl rollout restart deployment -n argocd argocd-repo-server
+
+# May also be needed
+
+kubectl rollout restart deployment -n argocd argocd-server
